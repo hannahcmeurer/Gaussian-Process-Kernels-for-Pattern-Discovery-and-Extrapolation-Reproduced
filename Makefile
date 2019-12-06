@@ -1,2 +1,2 @@
-figure1.png: GPKernel.py CO2data.csv
-     python GPKernel.py
+figure1.png: SMKernel.py CO2data.csv
+     python SMKernel.py
