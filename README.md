@@ -20,7 +20,7 @@ Website [link for tutorial](https://cims.nyu.edu/~andrewgw/pattern/)
 
 
 Reproduced figure:
-![Figure](https://github.com/hannahcmeurer/Gaussian-Process-Kernels-for-Pattern-Discovery-and-Extrapolation-Reproduced/blob/master/Figures/replicateFig.JPG)
+![Figure](https://github.com/hannahcmeurer/Gaussian-Process-Kernels-for-Pattern-Discovery-and-Extrapolation-Reproduced/blob/master/Figures/replicateFig.jpg)
 
 
 For this project these must be installed for using with python 3.7.  [Requirements here](https://github.com/hannahcmeurer/Gaussian-Process-Kernels-for-Pattern-Discovery-and-Extrapolation-Reproduced/blob/master/Requirements.txt)
