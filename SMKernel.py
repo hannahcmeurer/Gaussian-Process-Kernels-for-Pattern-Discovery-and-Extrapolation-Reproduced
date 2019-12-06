@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[14]:
-
-
 import pandas as pd
 import numpy as np
 import seaborn as sns; sns.set_style("white")
@@ -16,13 +10,6 @@ from sklearn.gaussian_process.kernels import (RBF, Matern, RationalQuadratic,
                                               ExpSineSquared, WhiteKernel, ConstantKernel as C)
 from sklearn import preprocessing
 from sklearn import metrics
-
-from scipy import signal as spsig
-from scipy import spatial as spat
-import collections
-
-
-# In[45]:
 
 
 def SM_kernel(xTrain, yTrain, xTest):
@@ -44,10 +31,6 @@ def SM_kernel(xTrain, yTrain, xTest):
     return X_, y_pred, y_std
     
 
-
-# In[46]:
-
-
 def matern(xTrain, yTrain, xTest):
     matern = Matern(length_scale=0.25)
     gp = GaussianProcessRegressor(kernel=matern, alpha=0,
@@ -61,11 +44,6 @@ def matern(xTrain, yTrain, xTest):
     y_pred, y_std = gp.predict(X_, return_std=True)
     return X_, y_pred
     
-
-
-# In[47]:
-
-
 def rational_quadratic(xTrain, yTrain, xTest):
     noise = 0.18**2 * RBF(length_scale=0.134) + WhiteKernel(noise_level=0.19**2)
     rational = 0.66**2* RationalQuadratic(length_scale=1.2, alpha=0.78) + noise
@@ -81,9 +59,6 @@ def rational_quadratic(xTrain, yTrain, xTest):
     return X_, y_pred
 
 
-# In[48]:
-
-
 def periodic_kernel(xTrain, yTrain, xTest):
     noise = 0.18**2 * RBF(length_scale=0.134) + WhiteKernel(noise_level=0.19**2)
     periodic = 2.4**2 * ExpSineSquared(length_scale=1.3, periodicity=1.0) +noise
@@ -97,10 +72,6 @@ def periodic_kernel(xTrain, yTrain, xTest):
     X_ = np.linspace(xTest.min(), xTest.max(), 200)[:, np.newaxis]
     y_pred, y_std = gp.predict(X_, return_std=True)
     return X_, y_pred
-
-
-# In[49]:
-
 
 def squared_exponential(xTrain, yTrain, xTest):
     k = 66.0**2 * RBF(length_scale=67.0)  # long term smooth rising trend
@@ -121,9 +92,9 @@ def squared_exponential(xTrain, yTrain, xTest):
     return X , y_pred
 
 
-# In[79]:
-
-
+  
+  
+  
 #start of combining the kernels onto a plot and loading the data
 #y is the CO2 and x is the year
 xTrain = pd.read_csv('./Data/CO2data.csv').iloc[1:200,4]
@@ -178,8 +149,6 @@ plt.savefig('./Figures/replicateFig.jpg')
 plt.show()
 
 
-# In[15]:
-
 
 def kernel(hypcov, x=None, z=None, diag=False):
     
@@ -221,9 +190,6 @@ def kernel(hypcov, x=None, z=None, diag=False):
                             np.dot(d, m[j,q])))
         K = K + C
     return K
-
-
-# In[ ]:
 
 
 def initSMParamsFourier(Q, x, y, sn, samplingFreq, nPeaks, relMaxOrder=2):
