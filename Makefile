@@ -1,2 +1,3 @@
-figure1.png: SMKernel.py CO2data.csv
+figure1.png: SMKernel.py ./Data/CO2data.csv
+     pip install -r Requirements.txt
      python SMKernel.py
